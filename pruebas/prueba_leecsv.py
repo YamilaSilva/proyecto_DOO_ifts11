@@ -1,6 +1,6 @@
 from main import Str2Dic
 
-f = open("csv_files/username.csv", "rt")
+f = open("csv_files/bdatos.csv", "rt")
 
 schema = f.readline().replace("\n", "")
 parser= Str2Dic(schema)
