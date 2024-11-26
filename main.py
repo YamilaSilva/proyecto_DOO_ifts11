@@ -1,6 +1,4 @@
-
 from database import *
-import json
 
 def mostrar_menu():
     print("\n--- Base de Datos Documental ---")
@@ -13,7 +11,7 @@ def mostrar_menu():
     return input("Seleccione una opción: ")
 
 def main():
-    db = DB("MiBaseDeDatos")
+    db = DB("MiBaseDeDatos") 
 
     while True:
         opcion = mostrar_menu()
@@ -27,7 +25,7 @@ def main():
             nombre_coleccion = input("Ingrese el nombre de la colección: ")
             collection = db.obtener_coleccion(nombre_coleccion)
             ruta_csv = input("Ingrese la ruta del archivo CSV: ")
-            collection.import_csv(nombre_coleccion, ruta_csv)
+            db.importar_csv(nombre_coleccion, ruta_csv)
         
         elif opcion == "3":
             nombre_coleccion = input("Ingrese el nombre de la colección: ")
@@ -54,7 +52,7 @@ def main():
             nombre_coleccion = input("Ingrese el nombre de la colección: ")
             coleccion = db.obtener_coleccion(nombre_coleccion)
             if coleccion:
-                documentos = coleccion.list_documents()
+                documentos = coleccion.listar_documentos()
                 if documentos:
                     print("\n--- Lista de Documentos ---")
                     for doc in documentos:

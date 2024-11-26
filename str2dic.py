@@ -27,9 +27,9 @@ class Str2Dic():
             raise SchemaError("Los campos de la fila no concuerdan con el schema")
         
 
-o = Str2Dic(schema)
-try:
-    d = o.convert(linea)
-    print(d)
-except SchemaError as e:
-    print("Falló algo en el schema", e)
+# o = Str2Dic(schema)
+# try:
+#     d = o.convert(linea)
+#     print(d)
+# except SchemaError as e:
+#     print("Falló algo en el schema", e)
