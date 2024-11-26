@@ -9,7 +9,7 @@ class SchemaError(Exception):
 
 
 class Str2Dic():
-    def __init__(self, schema: str, separator=','):
+    def __init__(self, schema: str, separator=';'):
         if len(schema) == 0:
             raise SchemaError("El schema esta vacío")
         self.schema = schema.split(separator)

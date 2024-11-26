@@ -65,20 +65,23 @@ class DB:
         return f"DB (nombre={self.nombre}, con {len(self.colecciones)} colecciones"
 
     def importar_csv(self, nombre_coleccion, path):
-        coleccion = self.obtener_coleccion(nombre_coleccion)
-        if not coleccion:
+        if not nombre_coleccion:
             raise ValueError(f"La colección '{nombre_coleccion}' no existe.")
-        f = open("csv_files/bdatos.csv", "rt")
         try:
             with open(path, 'r') as f:
                 schema = f.readline().replace("\n", "")
                 parser = Str2Dic(schema)
-                col = self.obtener_coleccion(self)  
+                linea = f.readline().strip()
+                doc_id = 1
+
+                while linea != "":
+                    contenido = parser.convert(linea)
+                    documento = Documento(doc_id, contenido)
+                    nombre_coleccion.añadir_documento(documento)
+                    doc_id += 1
+                    linea = f.readline().strip()
 
         except FileNotFoundError:
             raise FileNotFoundError(f"El archivo '{path}' no fue encontrado. Verifica la ruta.")
-        # for idx, row in enumerate(f, start=1):
-        #         contenido = parser.convert(row.strip())
-        #         documento = Documento(id=idx, contenido=contenido)
-        #         coleccion.añadir_documento(documento)        
+      
        

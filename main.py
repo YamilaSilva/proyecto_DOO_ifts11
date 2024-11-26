@@ -25,11 +25,11 @@ def main():
             nombre_coleccion = input("Ingrese el nombre de la colección: ")
             collection = db.obtener_coleccion(nombre_coleccion)
             ruta_csv = input("Ingrese la ruta del archivo CSV: ")
-            db.importar_csv(nombre_coleccion, ruta_csv)
+            db.importar_csv(collection, ruta_csv)
         
         elif opcion == "3":
             nombre_coleccion = input("Ingrese el nombre de la colección: ")
-            doc_id = input("Ingrese el ID del documento: ")
+            doc_id = int(input("Ingrese el ID del documento: "))
             coleccion = db.obtener_coleccion(nombre_coleccion)
             if coleccion:
                 documento = coleccion.buscar_documento(doc_id)
@@ -43,7 +43,7 @@ def main():
         
         elif opcion == "4":
             nombre_coleccion = input("Ingrese el nombre de la colección: ")
-            doc_id = input("Ingrese el ID del documento a eliminar: ")
+            doc_id = int(input("Ingrese el ID del documento a eliminar: "))
             coleccion = db.obtener_coleccion(nombre_coleccion)
             if coleccion:
                 coleccion.eliminar_documento(doc_id)
